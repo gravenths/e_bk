@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\SuratPeringatanController;
@@ -26,7 +26,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 
 // Protected App Routes
 Route::middleware('auth')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 
     // Data Siswa
     Route::prefix('siswa')->name('siswa.')->group(function () {
@@ -43,7 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::prefix('pelanggaran')->name('pelanggaran.')->group(function () {
         Route::get('/', [PelanggaranController::class, 'index'])->name('index');
         Route::post('/jenis', [PelanggaranController::class, 'storeJenis'])->name('jenis.store');
+        Route::get('/jenis/{id}/edit', [PelanggaranController::class, 'editJenis'])->name('jenis.edit');
         Route::put('/jenis/{id}', [PelanggaranController::class, 'updateJenis'])->name('jenis.update');
+        Route::delete('/jenis/{id}', [PelanggaranController::class, 'destroyJenis'])->name('jenis.destroy');
 
         Route::get('/riwayat', [PelanggaranController::class, 'riwayat'])->name('riwayat');
         Route::get('/tambah', [PelanggaranController::class, 'tambah'])->name('tambah');

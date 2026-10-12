@@ -1,0 +1,568 @@
+/* ==========================================================
+   E-BK — Sistem Informasi Bimbingan Konseling
+   Gaya klasik aplikasi sekolah: biru dominan, tabel bergaris,
+   border tipis, shadow ringan, tanpa animasi berlebihan.
+   ========================================================== */
+
+:root {
+    --ebk-navy: #1a2f6e;        /* biru tua: judul & navbar */
+    --ebk-navy-dark: #14275c;
+    --ebk-blue: #1d4ed8;        /* link */
+    --ebk-panel-head: #dde5f4;  /* header panel */
+    --ebk-border: #cfd6e4;
+    --ebk-bg: #ffffff;
+    --ebk-footer: #dde5f4;
+    --ebk-text: #1f2937;
+    --ebk-muted: #4b5563;
+    --ebk-green: #1e8e3e;
+}
+
+html, body {
+    background: var(--ebk-bg);
+    color: var(--ebk-text);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.ebk-main {
+    flex: 1 0 auto;
+}
+
+/* ---------- Header ---------- */
+.ebk-header {
+    background: #fff;
+    padding: 18px 0 14px;
+}
+
+.ebk-logo {
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+}
+
+.ebk-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: .5px;
+    color: var(--ebk-navy);
+    text-transform: uppercase;
+}
+
+.ebk-school {
+    margin: 8px 0 2px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+}
+
+.ebk-year {
+    margin: 0;
+    font-style: italic;
+    color: var(--ebk-navy);
+}
+
+.ebk-userbox {
+    text-align: right;
+    font-size: .95rem;
+    line-height: 1.9;
+}
+
+.ebk-userbox .welcome {
+    font-weight: 600;
+}
+
+.ebk-avatar {
+    width: 58px;
+    height: 58px;
+    border: 1.5px solid var(--ebk-navy);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--ebk-navy);
+    font-size: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+}
+
+/* ---------- Navbar ---------- */
+.ebk-nav {
+    background: var(--ebk-navy);
+    padding: 0;
+}
+
+.ebk-nav .navbar-nav {
+    gap: 4px;
+}
+
+.ebk-nav .nav-link {
+    color: #fff;
+    font-weight: 600;
+    font-size: .95rem;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    border-bottom: 3px solid transparent;
+}
+
+.ebk-nav .nav-link:hover,
+.ebk-nav .nav-link:focus,
+.ebk-nav .nav-link.show {
+    background: var(--ebk-navy-dark);
+    color: #fff;
+}
+
+.ebk-nav .nav-link.active {
+    border-bottom-color: #fff;
+}
+
+.ebk-nav .dropdown-toggle::after {
+    border-width: .3em .3em 0;
+    vertical-align: .15em;
+    margin-left: .5em;
+}
+
+.ebk-nav .dropdown-menu {
+    border: 1px solid var(--ebk-border);
+    border-radius: 0 0 4px 4px;
+    margin-top: 0;
+    padding: 4px 0;
+    font-size: .93rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+}
+
+.ebk-nav .dropdown-item {
+    padding: 8px 18px;
+}
+
+.ebk-nav .dropdown-item:hover {
+    background: var(--ebk-panel-head);
+    color: var(--ebk-navy);
+}
+
+.ebk-nav .navbar-toggler {
+    border-color: rgba(255, 255, 255, .6);
+    margin: 8px 0;
+}
+
+.ebk-nav .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* ---------- Judul halaman ---------- */
+.ebk-page-title {
+    margin: 26px 0 22px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: var(--ebk-navy);
+    text-transform: uppercase;
+}
+
+/* ---------- Kartu statistik ---------- */
+.stat-card {
+    height: 100%;
+    background: #fff;
+    border: 1px solid var(--ebk-border);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    padding: 22px 20px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.stat-icon {
+    flex: 0 0 auto;
+    width: 62px;
+    height: 62px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+    line-height: 1;
+}
+
+.stat-icon.blue   { background: #4f6fb3; color: #fff; }
+.stat-icon.red    { background: transparent; color: #d93a2f; font-size: 3rem; }
+.stat-icon.green  { background: transparent; color: #2e9a43; font-size: 3rem; }
+.stat-icon.orange { background: transparent; color: #f59e0b; font-size: 3rem; }
+
+.stat-label {
+    font-size: .85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .2px;
+    margin: 0;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 6px 0 4px;
+}
+
+.stat-sub {
+    font-size: .88rem;
+    line-height: 1.55;
+    color: var(--ebk-text);
+    margin: 0;
+}
+
+.ebk-link {
+    color: var(--ebk-blue);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.ebk-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Panel ---------- */
+.ebk-panel {
+    background: #fff;
+    border: 1px solid var(--ebk-border);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    height: 100%;
+}
+
+.ebk-panel-head {
+    background: var(--ebk-panel-head);
+    border-bottom: 1px solid var(--ebk-border);
+    padding: 13px 20px;
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: var(--ebk-navy);
+    text-transform: uppercase;
+}
+
+.ebk-panel-foot {
+    padding: 16px 20px;
+    border-top: 1px solid var(--ebk-border);
+}
+
+/* Kartu "Tahun Ajaran Aktif" */
+.year-card .year-name {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ebk-green);
+}
+
+.year-card .year-period {
+    margin: 0;
+    font-size: .85rem;
+    line-height: 1.5;
+}
+
+.year-card .ebk-panel-body {
+    padding: 18px 20px;
+}
+
+/* ---------- Tabel bergaris ---------- */
+.ebk-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+.ebk-table th,
+.ebk-table td {
+    border: 1px solid var(--ebk-border);
+    padding: 12px 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ebk-table thead th {
+    background: #fff;
+    font-weight: 700;
+}
+
+.ebk-table td.text-start-cell {
+    text-align: left;
+}
+
+.ebk-table tbody tr:hover {
+    background: #f5f8ff;
+}
+
+.ebk-table tr > :first-child { border-left: 0; }
+.ebk-table tr > :last-child  { border-right: 0; }
+.ebk-table thead tr:first-child > th { border-top: 0; }
+
+/* ---------- Badge SP ---------- */
+.sp-badge {
+    display: inline-block;
+    min-width: 60px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: .88rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.sp-badge.sp-1 { background: #fdeeb4; color: #5c4400; }
+.sp-badge.sp-2 { background: #f7b7b7; color: #7a1414; }
+.sp-badge.sp-3 { background: #e57373; color: #fff; }
+.sp-badge.sp-none { background: #e5e7eb; color: #374151; }
+
+/* ---------- Menu cepat ---------- */
+.quick-menu {
+    list-style: none;
+    margin: 0;
+    padding: 4px 20px 8px;
+}
+
+.quick-menu li + li {
+    border-top: 1px solid #e3e8f1;
+}
+
+.quick-menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    color: var(--ebk-text);
+    text-decoration: none;
+}
+
+.quick-menu a:hover {
+    color: var(--ebk-navy);
+}
+
+.quick-menu a:hover span {
+    text-decoration: underline;
+}
+
+.quick-menu i {
+    width: 24px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.quick-menu .ic-green  { color: #2e9a43; }
+.quick-menu .ic-navy   { color: var(--ebk-navy); }
+.quick-menu .ic-maroon { color: #7f1d1d; }
+.quick-menu .ic-orange { color: #f59e0b; }
+.quick-menu .ic-purple { color: #6b2d86; }
+
+/* ---------- Kartu statistik yang bisa diklik ---------- */
+a.stat-card-link {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+a.stat-card-link:hover .stat-card {
+    border-color: var(--ebk-navy);
+    box-shadow: 0 2px 8px rgba(26, 47, 110, .2);
+}
+
+/* Link wrapper untuk kartu Tahun Ajaran Aktif */
+a.stat-card-link .ebk-panel {
+    transition: border-color .15s, box-shadow .15s;
+}
+
+a.stat-card-link:hover .ebk-panel {
+    border-color: var(--ebk-navy);
+    box-shadow: 0 2px 8px rgba(26, 47, 110, .2);
+}
+
+/* ---------- Panel body Tahun Ajaran ---------- */
+.year-card .ebk-panel-body {
+    padding: 18px 20px;
+}
+
+/* ---------- Mini Menu Cepat (di baris stat cards) ---------- */
+.quick-mini-body {
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-mini-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #f0f4ff;
+    border: 1px solid var(--ebk-border);
+    border-radius: 4px;
+    color: var(--ebk-navy);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.quick-mini-btn:hover {
+    background: var(--ebk-panel-head);
+    color: var(--ebk-navy);
+    text-decoration: none;
+    border-color: var(--ebk-navy);
+}
+
+.quick-mini-btn i {
+    font-size: 1.4rem;
+    color: #2e9a43;
+    flex-shrink: 0;
+}
+
+/* ---------- Footer ---------- */
+.ebk-footer {
+    flex-shrink: 0;
+    margin-top: 48px;
+    background: var(--ebk-footer);
+    padding: 24px 0;
+    text-align: center;
+    font-size: .95rem;
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 991.98px) {
+    .ebk-title { font-size: 1.5rem; }
+    .ebk-logo { width: 72px; height: 72px; }
+    .ebk-userbox { text-align: left; }
+    .ebk-nav .nav-link { padding: 12px 16px; }
+}
+
+@media (max-width: 575.98px) {
+    .ebk-title { font-size: 1.25rem; }
+    .ebk-school { font-size: .95rem; }
+}
+
+/* Cetak: sembunyikan elemen navigasi */
+@media print {
+    .ebk-nav, .quick-menu-panel { display: none !important; }
+}
+
+/* ==========================================================
+   Compatibility Layer — Gaya halaman-halaman selain Beranda
+   (Data Siswa, Pelanggaran, SP, Laporan, Pengaturan, Kenaikan Kelas)
+   Selektor dibatasi ke dalam .ebk-main agar tidak bertabrakan
+   dengan Bootstrap 5 atau komponen .ebk-table milik Beranda.
+   ========================================================== */
+
+/* --- Tabel generik (tag <table> tanpa kelas .ebk-table) --- */
+.ebk-main table:not(.ebk-table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.ebk-main table:not(.ebk-table) th,
+.ebk-main table:not(.ebk-table) td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.ebk-main table:not(.ebk-table) thead th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.ebk-main table:not(.ebk-table) tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* --- Kartu / panel lama --- */
+.ebk-main .card {
+    display: block !important;      /* batalkan flex Bootstrap */
+    padding: 15px !important;
+    margin-bottom: 15px;
+    background-color: #fafafa !important;
+    border: 1px solid #ddd !important;
+    border-radius: 3px !important;
+    word-wrap: break-word;
+}
+
+/* --- Flex utilities lama --- */
+.flex   { display: flex; gap: 15px; }
+.flex-1 { flex: 1; }
+
+/* --- Form group lama --- */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+/* --- Tombol "default" (tanpa kelas warna Bootstrap) --- */
+.ebk-main .btn:not(.btn-primary):not(.btn-secondary):not(.btn-danger):not(.btn-success):not(.btn-warning):not(.btn-info):not(.btn-light):not(.btn-dark):not(.btn-link):not(.btn-close) {
+    background-color: #e0e0e0;
+    color: #333 !important;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.ebk-main .btn:not(.btn-primary):not(.btn-secondary):not(.btn-danger):not(.btn-success):not(.btn-warning):not(.btn-info):not(.btn-light):not(.btn-dark):not(.btn-link):not(.btn-close):hover {
+    background-color: #d0d0d0;
+    color: #111 !important;
+}
+
+/* --- Badge lama (.badge sebagai dasar, lalu warna SP) --- */
+.badge {
+    padding: 2px 8px !important;
+    border: 1px solid #ccc;
+    border-radius: 3px !important;
+    font-size: 13px !important;
+    font-weight: bold;
+}
+
+.badge-sp1 { background-color: #fff3cd !important; color: #856404 !important; border-color: #ffeeba; }
+.badge-sp2 { background-color: #ffe8d6 !important; color: #a74800 !important; border-color: #ffd8b8; }
+.badge-sp3 { background-color: #f8d7da !important; color: #721c24 !important; border-color: #f5c6cb; }
+
+/* --- Judul halaman (h2, h3) dalam konten --- */
+.ebk-main h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ebk-navy);
+}
+
+.ebk-main h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}

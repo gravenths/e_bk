@@ -46,6 +46,12 @@ class PelanggaranController extends Controller
         return redirect()->route('pelanggaran.index')->with('success', 'Jenis pelanggaran berhasil ditambahkan.');
     }
 
+    public function editJenis($id)
+    {
+        $jp = JenisPelanggaran::findOrFail($id);
+        return view('pelanggaran.edit', compact('jp'));
+    }
+
     public function updateJenis(Request $request, $id)
     {
         $jp = JenisPelanggaran::findOrFail($id);
@@ -59,6 +65,14 @@ class PelanggaranController extends Controller
         $jp->update($request->only(['nama', 'poin', 'status']));
 
         return redirect()->route('pelanggaran.index')->with('success', 'Jenis pelanggaran berhasil diperbarui.');
+    }
+
+    public function destroyJenis($id)
+    {
+        $jp = JenisPelanggaran::findOrFail($id);
+        $jp->delete();
+
+        return redirect()->route('pelanggaran.index')->with('success', 'Jenis pelanggaran berhasil dihapus.');
     }
 
     // Riwayat Pelanggaran

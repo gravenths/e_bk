@@ -2,211 +2,180 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'E-BK - Sistem Bimbingan Konseling')</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 20px;
-            display: inline-block;
-            font-family: 'Open Sans', sans-serif;
-        }
-        nav {
-            background-color: #eee;
-            padding: 8px 20px;
-            border-bottom: 1px solid #ccc;
-            font-family: 'Open Sans', sans-serif;
-        }
-        nav a {
-            color: #0066cc;
-            text-decoration: none;
-            margin-right: 15px;
-            font-weight: bold;
-            font-size: 15px;
-        }
-        nav a:hover, nav a.active {
-            text-decoration: underline;
-            color: #003366;
-        }
-        .container {
-            padding: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            background-color: #fff;
-            min-height: 500px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 8px 12px;
-            text-align: left;
-            font-size: 15px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .btn {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #e0e0e0;
-            color: #333;
-            text-decoration: none;
-            border: 1px solid #aaa;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 3px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .btn-primary {
-            background-color: #0066cc;
-            color: #fff;
-            border-color: #004080;
-        }
-        .btn-danger {
-            background-color: #cc0000;
-            color: #fff;
-            border-color: #990000;
-        }
-        .btn-success {
-            background-color: #28a745;
-            color: #fff;
-            border-color: #1e7e34;
-        }
-        .alert {
-            padding: 10px 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border-color: #c3e6cb;
-        }
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border-color: #f5c6cb;
-        }
-        .form-group {
-            margin-bottom: 12px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 4px;
-            font-weight: bold;
-            font-size: 14px;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 6px 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-        }
-        .card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 15px;
-            background-color: #fafafa;
-        }
-        .badge {
-            padding: 2px 6px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            font-size: 13px;
-            font-weight: bold;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .badge-sp1 { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
-        .badge-sp2 { background-color: #ffe8d6; color: #a74800; border-color: #ffd8b8; }
-        .badge-sp3 { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
-        .flex { display: flex; gap: 15px; }
-        .flex-1 { flex: 1; }
-        @media print {
-            header, nav, .no-print { display: none !important; }
-            body { background: #fff; }
-            .container { padding: 0; margin: 0; max-width: 100%; }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', 'Beranda') | E-BK SMA Negeri 8 Kota Banjarmasin</title>
+
+    {{-- Bootstrap 5 + Bootstrap Icons (CDN). Untuk produksi/offline, unduh dan simpan di public/vendor --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="{{ asset('css/ebk.css') }}" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
-    <header>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-                <h1 style="margin:0;">E-BK (Sistem Bimbingan Konseling)</h1>
+
+{{-- ================= HEADER ================= --}}
+<header class="ebk-header">
+    <div class="container-fluid px-4">
+        <div class="row align-items-center g-3">
+            <div class="col-lg-8 d-flex align-items-center gap-3">
+                <img src="{{ asset('img/logo-sman8.png') }}" alt="Logo SMA Negeri 8 Kota Banjarmasin" class="ebk-logo">
+                <div>
+                    <h1 class="ebk-title">Sistem Informasi<br>Bimbingan Konseling</h1>
+                    <p class="ebk-school">SMA Negeri 8 Kota Banjarmasin</p>
+                    <p class="ebk-year">Tahun Ajaran {{ $tahunAjaranAktif['nama'] ?? '-' }}</p>
+                </div>
             </div>
-            @auth
-            <div style="font-size:14px;">
-                Pengguna: <strong>{{ Auth::user()->name }}</strong> ({{ Auth::user()->role }}) |
-                <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" style="background:none; border:none; color:#ff9999; text-decoration:underline; cursor:pointer; font-family:'Open Sans', sans-serif;">Logout</button>
-                </form>
+
+            <div class="col-lg-4">
+                <div class="d-flex justify-content-lg-end align-items-start gap-3">
+                    <div class="ebk-userbox">
+                        <div class="welcome">
+                            Selamat datang,
+                            @auth{{ Auth::user()->name }}@else Admin @endauth
+                        </div>
+                        <div>
+                            Role :
+                            @auth{{ Auth::user()->role ?? 'Administrator' }}@else Administrator @endauth
+                        </div>
+                        <div>
+                            {{ $tanggalSekarang ?? now()->locale('id')->translatedFormat('l, d F Y') }}
+                            | <span id="jam-live">{{ now()->format('H:i:s') }}</span>
+                        </div>
+                    </div>
+                    <div class="ebk-avatar" aria-hidden="true"><i class="bi bi-person-fill"></i></div>
+                </div>
             </div>
-            @endauth
         </div>
-    </header>
+    </div>
+</header>
 
-    @auth
-    <nav class="no-print">
-        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Beranda</a>
-        <a href="{{ route('siswa.index') }}" class="{{ request()->routeIs('siswa.*') ? 'active' : '' }}">Data Siswa</a>
-        <a href="{{ route('pelanggaran.index') }}" class="{{ request()->routeIs('pelanggaran.index') ? 'active' : '' }}">Master Pelanggaran</a>
-        <a href="{{ route('pelanggaran.riwayat') }}" class="{{ request()->routeIs('pelanggaran.riwayat*') || request()->routeIs('pelanggaran.tambah') ? 'active' : '' }}">Riwayat Pelanggaran</a>
-        <a href="{{ route('surat-peringatan.index') }}" class="{{ request()->routeIs('surat-peringatan.*') ? 'active' : '' }}">Surat Peringatan</a>
-        <a href="{{ route('laporan.pelanggaran') }}" class="{{ request()->routeIs('laporan.*') ? 'active' : '' }}">Laporan</a>
-        <a href="{{ route('pengaturan.tahun-ajaran') }}" class="{{ request()->routeIs('pengaturan.*') ? 'active' : '' }}">Pengaturan</a>
-        <a href="{{ route('kenaikan-kelas.index') }}" class="{{ request()->routeIs('kenaikan-kelas.*') ? 'active' : '' }}">Kenaikan Kelas</a>
-    </nav>
-    @endauth
+{{-- ================= NAVBAR ================= --}}
+<nav class="navbar navbar-expand-lg ebk-nav">
+    <div class="container-fluid px-4">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menuUtama" aria-controls="menuUtama" aria-expanded="false" aria-label="Buka menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="container">
+        <div class="collapse navbar-collapse" id="menuUtama">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('beranda') ? 'active' : '' }}"
+                       href="{{ route('beranda') }}">Beranda</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('siswa.*') ? 'active' : '' }}"
+                       href="{{ route('siswa.index') }}">Data Siswa</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('pelanggaran.*') ? 'active' : '' }}"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pelanggaran</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('pelanggaran.riwayat') }}">Data Pelanggaran</a></li>
+                        <li><a class="dropdown-item" href="{{ route('pelanggaran.tambah') }}">Tambah Pelanggaran</a></li>
+                        <li><a class="dropdown-item" href="{{ route('pelanggaran.index') }}">Master Jenis Pelanggaran</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('surat-peringatan.*') ? 'active' : '' }}"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Surat Peringatan</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('surat-peringatan.index') }}">Siswa Memenuhi Syarat SP</a></li>
+                        <li><a class="dropdown-item" href="{{ route('surat-peringatan.riwayat') }}">Riwayat Surat Peringatan</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('laporan.*') ? 'active' : '' }}"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Laporan</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('laporan.pelanggaran') }}">Laporan Pelanggaran</a></li>
+                        <li><a class="dropdown-item" href="#">Export Excel</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ request()->routeIs('pengaturan.*') ? 'active' : '' }}"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengaturan</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('pengaturan.kelas') }}">Data Kelas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('pengaturan.tahun-ajaran') }}">Tahun Ajaran</a></li>
+                        <li><a class="dropdown-item" href="{{ route('pengaturan.batas-sp') }}">Batas Poin SP</a></li>
+                        <li><a class="dropdown-item" href="{{ route('pengaturan.pengguna') }}">Data Pengguna</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('kenaikan-kelas.*') ? 'active' : '' }}"
+                       href="{{ route('kenaikan-kelas.index') }}">Kenaikan Kelas</a>
+                </li>
+
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="#"
+                       onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Logout</a>
+                </li>
+                @endauth
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@auth
+<form id="form-logout" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+@endauth
+
+{{-- ================= KONTEN ================= --}}
+<main class="ebk-main">
+    <div class="container-fluid px-4">
+
         @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                 {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
             </div>
         @endif
 
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                 <strong>Terjadi Kesalahan:</strong>
-                <ul style="margin: 5px 0 0 20px; padding:0;">
+                <ul class="mb-0 mt-1">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Tutup"></button>
             </div>
         @endif
 
         @yield('content')
     </div>
+</main>
+
+{{-- ================= FOOTER ================= --}}
+<footer class="ebk-footer">
+    &copy; {{ now()->year }} Sistem Informasi Bimbingan Konseling - SMA Negeri 8 Kota Banjarmasin
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Jam berjalan di header (mengikuti jam perangkat pengguna)
+    (function () {
+        var el = document.getElementById('jam-live');
+        if (!el) return;
+        function pad(n) { return String(n).padStart(2, '0'); }
+        function tick() {
+            var d = new Date();
+            el.textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+        }
+        tick();
+        setInterval(tick, 1000);
+    })();
+</script>
+@stack('scripts')
 </body>
 </html>

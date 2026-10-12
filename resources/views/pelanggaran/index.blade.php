@@ -45,6 +45,7 @@
                     <th>Nama Pelanggaran</th>
                     <th>Poin</th>
                     <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,10 +54,18 @@
                     <td><strong>{{ $jp->nama }}</strong></td>
                     <td style="color:#cc0000; font-weight:bold;">+{{ $jp->poin }}</td>
                     <td>{{ $jp->status }}</td>
+                    <td>
+                        <a href="{{ route('pelanggaran.jenis.edit', $jp->id) }}" class="btn">Edit</a>
+                        <form action="{{ route('pelanggaran.jenis.destroy', $jp->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Hapus jenis pelanggaran ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="3" style="text-align:center;">Belum ada jenis pelanggaran.</td>
+                    <td colspan="4" style="text-align:center;">Belum ada jenis pelanggaran.</td>
                 </tr>
                 @endforelse
             </tbody>
