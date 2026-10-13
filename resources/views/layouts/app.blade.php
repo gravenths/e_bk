@@ -21,7 +21,7 @@
             <div class="col-lg-8 d-flex align-items-center gap-3">
                 <img src="{{ asset('img/logo-sman8.png') }}" alt="Logo SMA Negeri 8 Kota Banjarmasin" class="ebk-logo">
                 <div>
-                    <h1 class="ebk-title">Sistem Informasi<br>Bimbingan Konseling</h1>
+                    <h1 class="ebk-title">E-BK<br>Sistem Pengelolaan Poin Siswa</h1>
                     <p class="ebk-school">SMA Negeri 8 Kota Banjarmasin</p>
                     <p class="ebk-year">Tahun Ajaran {{ $tahunAjaranAktif['nama'] ?? '-' }}</p>
                 </div>
@@ -43,7 +43,6 @@
                             | <span id="jam-live">{{ now()->format('H:i:s') }}</span>
                         </div>
                     </div>
-                    <div class="ebk-avatar" aria-hidden="true"><i class="bi bi-person-fill"></i></div>
                 </div>
             </div>
         </div>

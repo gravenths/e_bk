@@ -17,6 +17,10 @@
     --ebk-green: #1e8e3e;
 }
 
+html {
+    zoom: 0.9;   /* Skala keseluruhan halaman setara browser zoom 90% */
+}
+
 html, body {
     background: var(--ebk-bg);
     color: var(--ebk-text);
