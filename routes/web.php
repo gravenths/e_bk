@@ -48,7 +48,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/jenis/{id}', [PelanggaranController::class, 'destroyJenis'])->name('jenis.destroy');
 
         Route::get('/riwayat', [PelanggaranController::class, 'riwayat'])->name('riwayat');
-        Route::get('/tambah', [PelanggaranController::class, 'tambah'])->name('tambah');
         Route::post('/riwayat', [PelanggaranController::class, 'storeRiwayat'])->name('riwayat.store');
         Route::delete('/riwayat/{id}', [PelanggaranController::class, 'destroyRiwayat'])->name('riwayat.destroy');
     });

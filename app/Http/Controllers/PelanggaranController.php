@@ -31,7 +31,6 @@ class PelanggaranController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'poin' => 'required|integer|min:1',
-            'status' => 'required|in:Aktif,Nonaktif',
         ]);
 
         $id = 'jp' . (JenisPelanggaran::count() + 1) . substr(time(), -3);
@@ -40,7 +39,6 @@ class PelanggaranController extends Controller
             'id' => $id,
             'nama' => $request->nama,
             'poin' => $request->poin,
-            'status' => $request->status,
         ]);
 
         return redirect()->route('pelanggaran.index')->with('success', 'Jenis pelanggaran berhasil ditambahkan.');
@@ -59,10 +57,9 @@ class PelanggaranController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'poin' => 'required|integer|min:1',
-            'status' => 'required|in:Aktif,Nonaktif',
         ]);
 
-        $jp->update($request->only(['nama', 'poin', 'status']));
+        $jp->update($request->only(['nama', 'poin']));
 
         return redirect()->route('pelanggaran.index')->with('success', 'Jenis pelanggaran berhasil diperbarui.');
     }
@@ -99,16 +96,20 @@ class PelanggaranController extends Controller
         }
 
         $riwayat = $query->orderBy('tanggal', 'desc')->orderBy('created_at', 'desc')->paginate(15);
-        $kelases = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
+        $kelases  = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
 
-        return view('pelanggaran.riwayat', compact('riwayat', 'kelases'));
+        // Data untuk form catat pelanggaran baru (inline di halaman yang sama)
+        $siswaList = Siswa::where('status', 'Aktif')->orderBy('nama')->get();
+        $jenisList = JenisPelanggaran::orderBy('nama')->get();
+
+        return view('pelanggaran.riwayat', compact('riwayat', 'kelases', 'siswaList', 'jenisList'));
     }
 
     // Form Catat Pelanggaran
     public function tambah()
     {
         $siswaList = Siswa::where('status', 'Aktif')->orderBy('nama')->get();
-        $jenisList = JenisPelanggaran::where('status', 'Aktif')->orderBy('nama')->get();
+        $jenisList = JenisPelanggaran::orderBy('nama')->get();
 
         return view('pelanggaran.tambah', compact('siswaList', 'jenisList'));
     }

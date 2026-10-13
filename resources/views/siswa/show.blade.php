@@ -9,7 +9,9 @@
         <p style="font-size:13px; color:#666;">NIS: {{ $siswa->nis }} | Kelas: {{ $siswa->kelas }} | JK: {{ $siswa->jk }}</p>
     </div>
     <div>
-        <a href="{{ route('pelanggaran.tambah') }}?siswa_id={{ $siswa->id }}" class="btn btn-danger">+ Catat Pelanggaran</a>
+        <a href="{{ route('pelanggaran.riwayat') }}?siswa_id={{ $siswa->id }}" class="btn-tambah">
+            <i class="bi bi-plus-circle-fill"></i> Catat Pelanggaran
+        </a>
         <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn">Edit Siswa</a>
         <a href="{{ route('siswa.index') }}" class="btn">&larr; Kembali</a>
     </div>

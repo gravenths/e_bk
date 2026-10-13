@@ -21,14 +21,6 @@
             <input type="number" name="poin" value="{{ old('poin', $jp->poin) }}" required min="1" placeholder="Poin">
         </div>
 
-        <div class="form-group">
-            <label>Status</label>
-            <select name="status" required>
-                <option value="Aktif" {{ old('status', $jp->status) === 'Aktif' ? 'selected' : '' }}>Aktif</option>
-                <option value="Nonaktif" {{ old('status', $jp->status) === 'Nonaktif' ? 'selected' : '' }}>Nonaktif</option>
-            </select>
-        </div>
-
         <div style="margin-top:15px;">
             <button type="submit" class="btn btn-primary">Perbarui Pelanggaran</button>
             <a href="{{ route('pelanggaran.index') }}" class="btn">Batal</a>

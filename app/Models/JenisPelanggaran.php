@@ -14,6 +14,5 @@ class JenisPelanggaran extends Model
         'id',
         'nama',
         'poin',
-        'status',
     ];
 }

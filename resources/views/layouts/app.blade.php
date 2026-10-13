@@ -69,14 +69,14 @@
                        href="{{ route('siswa.index') }}">Data Siswa</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->routeIs('pelanggaran.*') ? 'active' : '' }}"
-                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pelanggaran</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('pelanggaran.riwayat') }}">Data Pelanggaran</a></li>
-                        <li><a class="dropdown-item" href="{{ route('pelanggaran.tambah') }}">Tambah Pelanggaran</a></li>
-                        <li><a class="dropdown-item" href="{{ route('pelanggaran.index') }}">Master Jenis Pelanggaran</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('pelanggaran.index') || request()->routeIs('pelanggaran.jenis.*') ? 'active' : '' }}"
+                       href="{{ route('pelanggaran.index') }}">List Pelanggaran</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('pelanggaran.riwayat*') ? 'active' : '' }}"
+                       href="{{ route('pelanggaran.riwayat') }}">Pelanggaran Siswa</a>
                 </li>
 
                 <li class="nav-item dropdown">

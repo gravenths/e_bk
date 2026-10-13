@@ -72,7 +72,7 @@
         <div class="ebk-panel quick-mini-panel" style="height:100%;">
             <div class="ebk-panel-head">Menu Cepat</div>
             <div class="quick-mini-body">
-                <a href="{{ route('pelanggaran.tambah') }}" class="quick-mini-btn">
+                <a href="{{ route('pelanggaran.riwayat') }}" class="quick-mini-btn">
                     <i class="bi bi-plus-circle-fill"></i>
                     <span>Tambah Pelanggaran</span>
                 </a>
