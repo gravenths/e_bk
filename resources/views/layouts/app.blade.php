@@ -131,7 +131,7 @@
 
 {{-- ================= KONTEN ================= --}}
 <main class="ebk-main">
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4 pt-3">
 
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">

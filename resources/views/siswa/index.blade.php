@@ -3,9 +3,11 @@
 @section('title', 'Daftar Siswa - E-BK')
 
 @section('content')
-<div style="display:flex; justify-content:space-between; align-items:center;">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
     <h2>Daftar Siswa</h2>
-    <a href="{{ route('siswa.create') }}" class="btn btn-primary">+ Tambah Siswa Baru</a>
+    <a href="{{ route('siswa.create') }}" class="btn-tambah">
+        <i class="bi bi-plus-circle-fill"></i> Tambah Siswa Baru
+    </a>
 </div>
 
 <!-- Filter -->
@@ -38,11 +40,11 @@
 </div>
 
 <!-- Table -->
-<table>
+<table class="tbl-center">
     <thead>
         <tr>
             <th>NIS</th>
-            <th>Nama Siswa</th>
+            <th class="td-left">Nama Siswa</th>
             <th>Kelas</th>
             <th>L/P</th>
             <th>Total Poin</th>
@@ -58,7 +60,7 @@
         @endphp
         <tr>
             <td>{{ $s->nis }}</td>
-            <td><a href="{{ route('siswa.show', $s->id) }}"><strong>{{ $s->nama }}</strong></a></td>
+            <td class="td-left"><a href="{{ route('siswa.show', $s->id) }}"><strong>{{ $s->nama }}</strong></a></td>
             <td>{{ $s->kelas }}</td>
             <td>{{ $s->jk }}</td>
             <td style="color:#cc0000; font-weight:bold;">{{ $s->total_poin }} Poin</td>
@@ -81,15 +83,14 @@
         </tr>
         @empty
         <tr>
-            <td colspan="8" style="text-align:center;">Tidak ada data siswa ditemukan.</td>
+            <td colspan="8">Tidak ada data siswa ditemukan.</td>
         </tr>
         @endforelse
     </tbody>
 </table>
 
 @if($siswa->hasPages())
-<div style="margin-top:15px;">
     {{ $siswa->links() }}
-</div>
 @endif
+
 @endsection
