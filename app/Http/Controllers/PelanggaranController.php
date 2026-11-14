@@ -99,19 +99,31 @@ class PelanggaranController extends Controller
         $kelases  = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
 
         // Data untuk form catat pelanggaran baru (inline di halaman yang sama)
-        $siswaList = Siswa::where('status', 'Aktif')->orderBy('nama')->get();
+        $kelasList = $kelases; // reuse variabel yang sama
         $jenisList = JenisPelanggaran::orderBy('nama')->get();
 
-        return view('pelanggaran.riwayat', compact('riwayat', 'kelases', 'siswaList', 'jenisList'));
+        return view('pelanggaran.riwayat', compact('riwayat', 'kelases', 'kelasList', 'jenisList'));
     }
 
-    // Form Catat Pelanggaran
+    // Form Catat Pelanggaran (halaman tersendiri)
     public function tambah()
     {
-        $siswaList = Siswa::where('status', 'Aktif')->orderBy('nama')->get();
+        $kelasList = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
         $jenisList = JenisPelanggaran::orderBy('nama')->get();
 
-        return view('pelanggaran.tambah', compact('siswaList', 'jenisList'));
+        return view('pelanggaran.tambah', compact('kelasList', 'jenisList'));
+    }
+
+    // API: ambil siswa aktif berdasarkan kelas (untuk dropdown dinamis)
+    public function siswaByKelas(Request $request)
+    {
+        $kelas = $request->get('kelas');
+        $siswa = Siswa::where('status', 'Aktif')
+                      ->where('kelas', $kelas)
+                      ->orderBy('nama')
+                      ->get(['id', 'nama', 'nis']);
+
+        return response()->json($siswa);
     }
 
     public function storeRiwayat(Request $request)

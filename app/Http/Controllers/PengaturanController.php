@@ -74,7 +74,9 @@ class PengaturanController extends Controller
     // Data Kelas
     public function kelas()
     {
-        $kelases = Kelas::orderBy('tingkat')->orderBy('nama')->get();
+        $kelases = Kelas::with(['siswa' => function ($q) {
+            $q->orderBy('nama');
+        }])->orderBy('tingkat')->orderBy('nama')->get();
         return view('pengaturan.kelas', compact('kelases'));
     }
 
@@ -95,6 +97,15 @@ class PengaturanController extends Controller
         ]);
 
         return redirect()->route('pengaturan.kelas')->with('success', 'Data kelas berhasil ditambahkan.');
+    }
+
+    public function exportKelas($id)
+    {
+        $k = Kelas::with(['siswa' => function ($q) {
+            $q->with('riwayatPelanggaran.jenisPelanggaran')->orderBy('nama');
+        }])->findOrFail($id);
+
+        return view('pengaturan.kelas-export', compact('k'));
     }
 
     public function updateKelas(Request $request, $id)

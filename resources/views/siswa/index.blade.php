@@ -4,7 +4,12 @@
 
 @section('content')
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-    <h2>Daftar Siswa</h2>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <h2 style="margin:0;">Daftar Siswa</h2>
+        <a href="{{ route('pengaturan.kelas') }}" class="btn btn-secondary" style="font-size:13px; padding:5px 12px;">
+            <i class="bi bi-grid-3x3-gap-fill"></i> Lihat Daftar Kelas
+        </a>
+    </div>
     <a href="{{ route('siswa.create') }}" class="btn-tambah">
         <i class="bi bi-plus-circle-fill"></i> Tambah Siswa Baru
     </a>

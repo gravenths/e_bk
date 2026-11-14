@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Beranda') | E-BK SMA Negeri 8 Kota Banjarmasin</title>
+    <title>E-BK</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-sman8.png') }}">
 
     {{-- Bootstrap 5 + Bootstrap Icons (CDN). Untuk produksi/offline, unduh dan simpan di public/vendor --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -101,7 +102,6 @@
                     <a class="nav-link dropdown-toggle {{ request()->routeIs('pengaturan.*') ? 'active' : '' }}"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengaturan</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('pengaturan.kelas') }}">Data Kelas</a></li>
                         <li><a class="dropdown-item" href="{{ route('pengaturan.tahun-ajaran') }}">Tahun Ajaran</a></li>
                         <li><a class="dropdown-item" href="{{ route('pengaturan.batas-sp') }}">Batas Poin SP</a></li>
                         <li><a class="dropdown-item" href="{{ route('pengaturan.pengguna') }}">Data Pengguna</a></li>

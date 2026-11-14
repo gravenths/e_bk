@@ -50,6 +50,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/riwayat', [PelanggaranController::class, 'riwayat'])->name('riwayat');
         Route::post('/riwayat', [PelanggaranController::class, 'storeRiwayat'])->name('riwayat.store');
         Route::delete('/riwayat/{id}', [PelanggaranController::class, 'destroyRiwayat'])->name('riwayat.destroy');
+
+        Route::get('/tambah', [PelanggaranController::class, 'tambah'])->name('tambah');
+        Route::get('/siswa-by-kelas', [PelanggaranController::class, 'siswaByKelas'])->name('siswa-by-kelas');
     });
 
     // Surat Peringatan
@@ -79,6 +82,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/kelas', [PengaturanController::class, 'kelas'])->name('kelas');
         Route::post('/kelas', [PengaturanController::class, 'storeKelas'])->name('kelas.store');
         Route::put('/kelas/{id}', [PengaturanController::class, 'updateKelas'])->name('kelas.update');
+        Route::get('/kelas/{id}/export', [PengaturanController::class, 'exportKelas'])->name('kelas.export');
 
         Route::get('/pengguna', [PengaturanController::class, 'pengguna'])->name('pengguna');
         Route::post('/pengguna', [PengaturanController::class, 'storePengguna'])->name('pengguna.store');

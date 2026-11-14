@@ -16,4 +16,9 @@ class Kelas extends Model
         'tingkat',
         'status',
     ];
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'kelas', 'nama');
+    }
 }
