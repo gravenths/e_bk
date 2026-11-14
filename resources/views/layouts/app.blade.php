@@ -89,13 +89,9 @@
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {{ request()->routeIs('laporan.*') ? 'active' : '' }}"
-                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Laporan</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('laporan.pelanggaran') }}">Laporan Pelanggaran</a></li>
-                        <li><a class="dropdown-item" href="#">Export Excel</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('laporan.*') ? 'active' : '' }}"
+                       href="{{ route('laporan.pelanggaran') }}">Laporan</a>
                 </li>
 
                 <li class="nav-item dropdown">
