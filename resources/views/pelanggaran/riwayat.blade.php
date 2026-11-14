@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pelanggaran Siswa - E-BK')
+@section('title', 'Riwayat Pelanggaran - E-BK')
 
 @section('content')
 
@@ -10,7 +10,7 @@
 @endphp
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-    <h2>Pelanggaran Siswa</h2>
+    <h2>Riwayat Pelanggaran</h2>
     <button class="btn-tambah" type="button"
             data-bs-toggle="collapse" data-bs-target="#formCatat" aria-expanded="{{ $showForm ? 'true' : 'false' }}">
         <i class="bi bi-plus-circle-fill"></i> Catat Pelanggaran Baru
@@ -117,7 +117,24 @@
                 </select>
             </div>
             <div>
+                <select name="urutkan" onchange="this.form.submit()" style="padding:6px;">
+                    <option value="terbaru" {{ request('urutkan', 'terbaru') == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                    <option value="terlama" {{ request('urutkan') == 'terlama' ? 'selected' : '' }}>Terlama</option>
+                </select>
+            </div>
+        </div>
+        <div class="flex" style="margin-top:8px; align-items:center;">
+            <div style="display:flex; align-items:center; gap:6px;">
+                <label style="margin:0; white-space:nowrap;">Dari Tanggal</label>
+                <input type="date" name="start_date" value="{{ request('start_date') }}" style="padding:6px;">
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+                <label style="margin:0; white-space:nowrap;">Sampai Tanggal</label>
+                <input type="date" name="end_date" value="{{ request('end_date') }}" style="padding:6px;">
+            </div>
+            <div>
                 <button type="submit" class="btn">Cari</button>
+                <a href="{{ route('pelanggaran.riwayat') }}" class="btn">Reset</a>
             </div>
         </div>
     </form>

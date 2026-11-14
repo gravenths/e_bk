@@ -95,7 +95,19 @@ class PelanggaranController extends Controller
             $query->where('pencatat', $request->pencatat);
         }
 
-        $riwayat = $query->orderBy('tanggal', 'desc')->orderBy('created_at', 'desc')->paginate(15);
+        if ($request->filled('start_date')) {
+            $query->whereDate('tanggal', '>=', $request->start_date);
+        }
+
+        if ($request->filled('end_date')) {
+            $query->whereDate('tanggal', '<=', $request->end_date);
+        }
+
+        $urutan = $request->input('urutkan') === 'terlama' ? 'asc' : 'desc';
+
+        $riwayat = $query->orderBy('tanggal', $urutan)->orderBy('created_at', $urutan)
+                         ->paginate(15)
+                         ->withQueryString();
         $kelases  = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
 
         // Data untuk form catat pelanggaran baru (inline di halaman yang sama)

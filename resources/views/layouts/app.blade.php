@@ -77,7 +77,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('pelanggaran.riwayat*') ? 'active' : '' }}"
-                       href="{{ route('pelanggaran.riwayat') }}">Pelanggaran Siswa</a>
+                       href="{{ route('pelanggaran.riwayat') }}">Riwayat Pelanggaran</a>
                 </li>
 
                 <li class="nav-item dropdown">
