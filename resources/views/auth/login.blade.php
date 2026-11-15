@@ -46,7 +46,10 @@
             </div>
 
             <div class="form-group" style="font-size:13px;">
-                <label><input type="checkbox" name="remember"> Ingat Saya</label>
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                    <input type="checkbox" name="remember" style="width:auto; margin:0;">
+                    Ingat Saya
+                </label>
             </div>
 
             <button type="submit" class="btn">Masuk</button>
