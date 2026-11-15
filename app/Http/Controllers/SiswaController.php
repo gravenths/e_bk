@@ -49,7 +49,9 @@ class SiswaController extends Controller
             'nama' => 'required|string|max:255',
             'kelas' => 'required|string',
             'jk' => 'required|in:L,P',
-            'status' => 'required|in:Aktif,Nonaktif',
+            'status'     => 'required|in:Aktif,Nonaktif',
+            'nama_wali'  => 'nullable|string|max:255',
+            'no_wa_wali' => 'nullable|regex:/^(\+?62|0)[0-9]{8,13}$/',
         ]);
 
         $id = 's' . (Siswa::count() + 1) . substr(time(), -3);
@@ -60,7 +62,9 @@ class SiswaController extends Controller
             'nama' => $request->nama,
             'kelas' => $request->kelas,
             'jk' => $request->jk,
-            'status' => $request->status,
+            'status'     => $request->status,
+            'nama_wali'  => $request->nama_wali  ?: null,
+            'no_wa_wali' => $request->no_wa_wali ?: null,
         ]);
 
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil ditambahkan.');
@@ -91,10 +95,12 @@ class SiswaController extends Controller
             'nama' => 'required|string|max:255',
             'kelas' => 'required|string',
             'jk' => 'required|in:L,P',
-            'status' => 'required|in:Aktif,Nonaktif',
+            'status'     => 'required|in:Aktif,Nonaktif',
+            'nama_wali'  => 'nullable|string|max:255',
+            'no_wa_wali' => 'nullable|regex:/^(\+?62|0)[0-9]{8,13}$/',
         ]);
 
-        $siswa->update($request->only(['nis', 'nama', 'kelas', 'jk', 'status']));
+        $siswa->update($request->only(['nis', 'nama', 'kelas', 'jk', 'status', 'nama_wali', 'no_wa_wali']));
 
         return redirect()->route('siswa.show', $id)->with('success', 'Data siswa berhasil diperbarui.');
     }

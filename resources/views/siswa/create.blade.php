@@ -38,6 +38,16 @@
         </div>
 
         <div class="form-group">
+            <label>Nama Wali <span style="font-weight:normal; color:#888;">(opsional)</span></label>
+            <input type="text" name="nama_wali" value="{{ old('nama_wali') }}" placeholder="Contoh: Bapak Ahmad">
+        </div>
+
+        <div class="form-group">
+            <label>No. WhatsApp Wali <span style="font-weight:normal; color:#888;">(opsional)</span></label>
+            <input type="text" name="no_wa_wali" value="{{ old('no_wa_wali') }}" placeholder="Contoh: 08123456789">
+        </div>
+
+        <div class="form-group">
             <label>Status Siswa</label>
             <select name="status" required>
                 <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>

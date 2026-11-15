@@ -88,11 +88,11 @@ class EbkSeeder extends Seeder
 
         // Siswa
         $siswa = [
-            ['id' => 's1', 'nis' => '10001', 'nama' => 'Ahmad Fauzan', 'kelas' => '12-1', 'jk' => 'L', 'status' => 'Aktif'],
-            ['id' => 's2', 'nis' => '10002', 'nama' => 'Rian Aditya', 'kelas' => '11-2', 'jk' => 'L', 'status' => 'Aktif'],
-            ['id' => 's3', 'nis' => '10003', 'nama' => 'Dwi Ananda', 'kelas' => '12-3', 'jk' => 'P', 'status' => 'Aktif'],
-            ['id' => 's4', 'nis' => '10004', 'nama' => 'Fajar Ramadhan', 'kelas' => '11-1', 'jk' => 'L', 'status' => 'Aktif'],
-            ['id' => 's5', 'nis' => '10005', 'nama' => 'Siti Aisyah', 'kelas' => '11-3', 'jk' => 'P', 'status' => 'Aktif'],
+            ['id' => 's1', 'nis' => '10001', 'nama' => 'Ahmad Fauzan', 'kelas' => '12-1', 'jk' => 'L', 'status' => 'Aktif', 'nama_wali' => 'Bapak Fauzi', 'no_wa_wali' => '081234567890'],
+            ['id' => 's2', 'nis' => '10002', 'nama' => 'Rian Aditya', 'kelas' => '11-2', 'jk' => 'L', 'status' => 'Aktif', 'nama_wali' => 'Ibu Ratna', 'no_wa_wali' => '082345678901'],
+            ['id' => 's3', 'nis' => '10003', 'nama' => 'Dwi Ananda', 'kelas' => '12-3', 'jk' => 'P', 'status' => 'Aktif', 'nama_wali' => 'Bapak Ananda', 'no_wa_wali' => '6283456789012'],
+            ['id' => 's4', 'nis' => '10004', 'nama' => 'Fajar Ramadhan', 'kelas' => '11-1', 'jk' => 'L', 'status' => 'Aktif', 'nama_wali' => 'Ibu Ramadhan', 'no_wa_wali' => '+6284567890123'],
+            ['id' => 's5', 'nis' => '10005', 'nama' => 'Siti Aisyah', 'kelas' => '11-3', 'jk' => 'P', 'status' => 'Aktif', 'nama_wali' => null, 'no_wa_wali' => null],
             ['id' => 's6', 'nis' => '10006', 'nama' => 'Budi Santoso', 'kelas' => '11-2', 'jk' => 'L', 'status' => 'Aktif'],
             ['id' => 's7', 'nis' => '10007', 'nama' => 'Dewi Lestari', 'kelas' => '10-1', 'jk' => 'P', 'status' => 'Aktif'],
             ['id' => 's8', 'nis' => '10008', 'nama' => 'Eko Prasetyo', 'kelas' => '10-2', 'jk' => 'L', 'status' => 'Aktif'],

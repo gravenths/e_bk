@@ -22,6 +22,7 @@
             <th>Total Poin</th>
             <th>Status Kelayakan</th>
             <th>Aksi</th>
+            <th>Chat Wali Siswa</th>
         </tr>
     </thead>
     <tbody>
@@ -46,10 +47,27 @@
                     <button type="submit" class="btn btn-primary">Terbitkan {{ $k->jenis_sp }}</button>
                 </form>
             </td>
+            <td>
+                @php
+                    $pesanSp = 'Assalamu\'alaikum Bapak/Ibu ' . ($k->siswa->nama_wali ?: 'Wali') . ', kami dari SMA Negeri 8 Banjarmasin ingin memberitahukan bahwa putra/putri Anda, ' . $k->siswa->nama . ' (Kelas ' . $k->siswa->kelas . '), telah mencapai ' . $k->total_poin . ' poin pelanggaran dan memenuhi syarat ' . $k->jenis_sp . '. Mohon segera menghubungi Guru BK SMA Negeri 8 Banjarmasin. Terima kasih.';
+                @endphp
+                @if($k->siswa->noWaInternasional())
+                    <a href="{{ $k->siswa->waLink($pesanSp) }}"
+                       target="_blank" rel="noopener"
+                       class="btn btn-success btn-sm">
+                        <i class="bi bi-whatsapp"></i> Chat WA
+                    </a>
+                @else
+                    <button class="btn btn-secondary btn-sm" disabled
+                            title="Nomor wali belum diisi">
+                        <i class="bi bi-whatsapp"></i> Chat WA
+                    </button>
+                @endif
+            </td>
         </tr>
         @empty
         <tr>
-            <td colspan="6" style="text-align:center;">Tidak ada siswa yang memenuhi batas SP saat ini.</td>
+            <td colspan="7" style="text-align:center;">Tidak ada siswa yang memenuhi batas SP saat ini.</td>
         </tr>
         @endforelse
     </tbody>

@@ -17,6 +17,8 @@ class Siswa extends Model
         'kelas',
         'jk',
         'status',
+        'nama_wali',
+        'no_wa_wali',
     ];
 
     public function riwayatPelanggaran()
@@ -45,5 +47,41 @@ class Siswa extends Model
         if ($poin >= $limits->sp2) return 'SP 2';
         if ($poin >= $limits->sp1) return 'SP 1';
         return 'Belum';
+    }
+
+    /**
+     * Ubah nomor WA ke format internasional tanpa "+" (untuk wa.me).
+     * Kembalikan null jika kosong.
+     */
+    public function noWaInternasional(): ?string
+    {
+        $no = $this->no_wa_wali;
+        if (empty($no)) {
+            return null;
+        }
+
+        // Buang semua karakter non-digit kecuali tanda "+" di awal
+        $no = preg_replace('/[^\d+]/', '', $no);
+
+        if (str_starts_with($no, '+62')) {
+            $no = '62' . substr($no, 3);
+        } elseif (str_starts_with($no, '0')) {
+            $no = '62' . substr($no, 1);
+        }
+
+        return $no;
+    }
+
+    /**
+     * Buat tautan wa.me dengan pesan terisi otomatis.
+     */
+    public function waLink(string $pesan): ?string
+    {
+        $no = $this->noWaInternasional();
+        if ($no === null) {
+            return null;
+        }
+
+        return 'https://wa.me/' . $no . '?text=' . rawurlencode($pesan);
     }
 }

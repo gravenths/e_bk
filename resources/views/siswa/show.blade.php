@@ -38,6 +38,23 @@
             <td style="border:none; padding:4px 15px 4px 0;"><strong>Status Keaktifan:</strong></td>
             <td style="border:none; padding:4px 0;">{{ $siswa->status }}</td>
         </tr>
+        <tr>
+            <td style="border:none; padding:4px 15px 4px 0;"><strong>Nama Wali:</strong></td>
+            <td style="border:none; padding:4px 0;">{{ $siswa->nama_wali ?: '-' }}</td>
+        </tr>
+        <tr>
+            <td style="border:none; padding:4px 15px 4px 0;"><strong>No. WhatsApp Wali:</strong></td>
+            <td style="border:none; padding:4px 0;">
+                @if($siswa->noWaInternasional())
+                    <a href="{{ $siswa->waLink('Assalamu\'alaikum Bapak/Ibu ' . $siswa->nama_wali . ', kami dari SMA Negeri 8 Banjarmasin ingin menyampaikan informasi terkait putra/putri Anda, ' . $siswa->nama . ' (Kelas ' . $siswa->kelas . '). Saat ini total poin pelanggaran: ' . $siswa->total_poin . ' poin. Mohon berkenan berkoordinasi dengan Guru BK kami. Terima kasih.') }}"
+                       target="_blank" rel="noopener" class="btn btn-success btn-sm">
+                        <i class="bi bi-whatsapp"></i> Chat WA ({{ $siswa->no_wa_wali }})
+                    </a>
+                @else
+                    {{ $siswa->no_wa_wali ?: '-' }}
+                @endif
+            </td>
+        </tr>
     </table>
 </div>
 

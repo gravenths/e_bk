@@ -56,6 +56,7 @@
             <th>Status SP</th>
             <th>Status</th>
             <th>Aksi</th>
+            <th>Chat Wali Siswa</th>
         </tr>
     </thead>
     <tbody>
@@ -85,10 +86,27 @@
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </form>
             </td>
+            <td>
+                @php
+                    $pesanIndex = 'Assalamu\'alaikum Bapak/Ibu ' . ($s->nama_wali ?: 'Wali') . ', kami dari SMA Negeri 8 Banjarmasin ingin menyampaikan informasi terkait putra/putri Anda, ' . $s->nama . ' (Kelas ' . $s->kelas . '). Saat ini total poin pelanggaran tercatat: ' . $s->total_poin . ' poin. Mohon berkenan berkoordinasi dengan Guru BK kami untuk penanganan lebih lanjut. Terima kasih.';
+                @endphp
+                @if($s->noWaInternasional())
+                    <a href="{{ $s->waLink($pesanIndex) }}"
+                       target="_blank" rel="noopener"
+                       class="btn btn-success btn-sm">
+                        <i class="bi bi-whatsapp"></i> Chat WA
+                    </a>
+                @else
+                    <button class="btn btn-secondary btn-sm" disabled
+                            title="Nomor wali belum diisi">
+                        <i class="bi bi-whatsapp"></i> Chat WA
+                    </button>
+                @endif
+            </td>
         </tr>
         @empty
         <tr>
-            <td colspan="8">Tidak ada data siswa ditemukan.</td>
+            <td colspan="9">Tidak ada data siswa ditemukan.</td>
         </tr>
         @endforelse
     </tbody>
