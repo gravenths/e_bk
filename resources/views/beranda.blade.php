@@ -9,7 +9,20 @@
 {{-- ============ KARTU STATISTIK ============ --}}
 <div class="row g-3">
 
-    {{-- 1. Total Siswa → Data Siswa --}}
+    {{-- 1. Mini Menu Cepat --}}
+    <div class="col-12 col-md-6 col-xl">
+        <div class="ebk-panel quick-mini-panel" style="height:100%;">
+            <div class="ebk-panel-head">Menu Cepat</div>
+            <div class="quick-mini-body">
+                <a href="{{ route('pelanggaran.tambah') }}" class="quick-mini-btn">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    <span>Tambah Pelanggaran</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- 2. Total Siswa → Data Siswa --}}
     <div class="col-12 col-md-6 col-xl">
         <a href="{{ route('siswa.index') }}" class="stat-card-link">
             <div class="stat-card">
@@ -67,18 +80,6 @@
         </a>
     </div>
 
-    {{-- 5. Mini Menu Cepat (menggantikan posisi Tahun Ajaran) --}}
-    <div class="col-12 col-md-6 col-xl">
-        <div class="ebk-panel quick-mini-panel" style="height:100%;">
-            <div class="ebk-panel-head">Menu Cepat</div>
-            <div class="quick-mini-body">
-                <a href="{{ route('pelanggaran.tambah') }}" class="quick-mini-btn">
-                    <i class="bi bi-plus-circle-fill"></i>
-                    <span>Tambah Pelanggaran</span>
-                </a>
-            </div>
-        </div>
-    </div>
 
 </div>
 
