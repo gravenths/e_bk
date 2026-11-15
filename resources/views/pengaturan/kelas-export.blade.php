@@ -56,4 +56,14 @@
         @endforelse
     </tbody>
 </table>
+@push('styles')
+<style>
+@media print {
+    * { color: #000 !important; }
+    .badge { background: none !important; border: 1px solid #000 !important; }
+    a { text-decoration: none !important; }
+}
+</style>
+@endpush
+
 @endsection

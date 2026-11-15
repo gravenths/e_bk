@@ -99,7 +99,7 @@
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengaturan</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('pengaturan.tahun-ajaran') }}">Tahun Ajaran</a></li>
-                        <li><a class="dropdown-item" href="{{ route('pengaturan.batas-sp') }}">Batas Poin SP</a></li>
+
                         <li><a class="dropdown-item" href="{{ route('pengaturan.pengguna') }}">Data Pengguna</a></li>
                     </ul>
                 </li>

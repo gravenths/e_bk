@@ -22,8 +22,9 @@ class PelanggaranController extends Controller
         }
 
         $jenisPelanggaran = $query->orderBy('nama')->get();
+        $spLimits = \App\Models\SpSetting::first() ?? (object)['sp1' => 20, 'sp2' => 40, 'sp3' => 60];
 
-        return view('pelanggaran.index', compact('jenisPelanggaran'));
+        return view('pelanggaran.index', compact('jenisPelanggaran', 'spLimits'));
     }
 
     public function storeJenis(Request $request)
