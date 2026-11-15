@@ -119,12 +119,15 @@ class PelanggaranController extends Controller
     }
 
     // Form Catat Pelanggaran (halaman tersendiri)
-    public function tambah()
+    public function tambah(Request $request)
     {
-        $kelasList = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
-        $jenisList = JenisPelanggaran::orderBy('nama')->get();
+        $kelasList   = Kelas::where('status', 'Aktif')->orderBy('nama')->get();
+        $jenisList   = JenisPelanggaran::orderBy('nama')->get();
+        $initKelas   = $request->query('kelas', '');
+        $initSiswaId = $request->query('siswa_id', '');
+        $initTanggal = $request->query('tanggal', date('Y-m-d'));
 
-        return view('pelanggaran.tambah', compact('kelasList', 'jenisList'));
+        return view('pelanggaran.tambah', compact('kelasList', 'jenisList', 'initKelas', 'initSiswaId', 'initTanggal'));
     }
 
     // API: ambil siswa aktif berdasarkan kelas (untuk dropdown dinamis)
@@ -160,7 +163,18 @@ class PelanggaranController extends Controller
             'pencatat' => $pencatat,
         ]);
 
-        return redirect()->route('pelanggaran.riwayat')->with('success', 'Catatan pelanggaran siswa berhasil disimpan.');
+        $success = 'Catatan pelanggaran siswa berhasil disimpan.';
+
+        if ($request->input('redirect_tambah') === '1') {
+            return redirect()
+                ->route('pelanggaran.tambah', [
+                    'kelas'   => $request->kelas,
+                    'tanggal' => $request->tanggal,
+                ])
+                ->with('success', $success);
+        }
+
+        return redirect()->route('pelanggaran.riwayat')->with('success', $success);
     }
 
     public function destroyRiwayat($id)

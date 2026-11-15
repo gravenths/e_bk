@@ -607,3 +607,134 @@ a.stat-card-link:hover .ebk-panel {
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
+
+/* ==========================================================
+   RESPONSIF MOBILE — Optimasi untuk lebar 360–420 px
+   (Guru BK di lapangan). Jangan ubah bagian di atas.
+   ========================================================== */
+
+/* ---------- Beranda: kartu statistik di HP ---------- */
+@media (max-width: 767.98px) {
+
+    /* Kartu stat: font lebih kecil, padding mampat */
+    .stat-card {
+        padding: 14px 12px;
+        gap: 12px;
+    }
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.8rem;
+    }
+    .stat-value { font-size: 1.5rem; }
+    .stat-label { font-size: .78rem; }
+    .stat-sub   { font-size: .8rem; }
+
+    /* Tombol Tambah Pelanggaran di quick-mini-btn: tinggi min 56px */
+    .quick-mini-btn {
+        min-height: 56px;
+        font-size: 1.05rem;
+        justify-content: center;
+    }
+    .quick-mini-btn i { font-size: 1.6rem; }
+
+    /* Semua .btn dan .btn-* minimal 44px agar mudah diketuk */
+    .ebk-main .btn,
+    .ebk-main .btn-tambah,
+    .ebk-main a.btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Filter bertumpuk vertikal */
+    .ebk-main .flex {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .ebk-main .flex > div,
+    .ebk-main .flex > .flex-1 {
+        width: 100%;
+    }
+    .ebk-main .flex input,
+    .ebk-main .flex select {
+        width: 100% !important;
+    }
+
+    /* Input & select: font 16px agar tidak zoom di iPhone */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px !important;
+        min-height: 44px;
+        padding: 8px 10px;
+    }
+
+    /* Form tambah pelanggaran: lebar penuh (hapus max-width) */
+    .ebk-main .card.card-form-tambah {
+        max-width: 100% !important;
+    }
+
+    /* Paginasi kecil */
+    .pagination { font-size: .85rem; }
+
+    /* Sembunyikan header & filter saat print */
+}
+
+/* ---------- Beranda: tabel poin tertinggi di HP ---------- */
+@media (max-width: 767.98px) {
+    .ebk-table th.col-hide-sm,
+    .ebk-table td.col-hide-sm {
+        display: none;
+    }
+}
+
+/* ---------- Kartu siswa mobile (Data Siswa) ---------- */
+.siswa-card-mobile {
+    background: #fff;
+    border: 1px solid var(--ebk-border);
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+.siswa-card-mobile .siswa-nama {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ebk-navy);
+    margin-bottom: 4px;
+}
+.siswa-card-mobile .siswa-meta {
+    font-size: .88rem;
+    color: var(--ebk-muted);
+    margin-bottom: 8px;
+}
+.siswa-card-mobile .siswa-poin {
+    font-weight: 700;
+    color: #cc0000;
+}
+.siswa-card-mobile .aksi-baris {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    align-items: center;
+}
+.siswa-card-mobile .aksi-baris .btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    font-size: .9rem;
+}
+
+/* ---------- Cetak: sembunyikan navbar, filter, tombol ---------- */
+@media print {
+    .ebk-header,
+    .ebk-nav,
+    .no-print,
+    .ebk-main .card.no-print,
+    .ebk-footer { display: none !important; }
+}

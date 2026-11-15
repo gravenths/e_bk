@@ -13,10 +13,11 @@
     <span class="badge badge-sp3">SP 3: ≥ {{ $spLimits->sp3 }} Poin</span>
 </div>
 
+<div class="table-responsive">
 <table>
     <thead>
         <tr>
-            <th>NIS</th>
+            <th class="d-none d-md-table-cell">NIS</th>
             <th>Nama Siswa</th>
             <th>Kelas</th>
             <th>Total Poin</th>
@@ -28,7 +29,7 @@
     <tbody>
         @forelse($daftarKandidat as $k)
         <tr>
-            <td>{{ $k->siswa->nis }}</td>
+            <td class="d-none d-md-table-cell">{{ $k->siswa->nis }}</td>
             <td><a href="{{ route('siswa.show', $k->siswa->id) }}"><strong>{{ $k->siswa->nama }}</strong></a></td>
             <td>{{ $k->siswa->kelas }}</td>
             <td style="color:#cc0000; font-weight:bold;">{{ $k->total_poin }} Poin</td>
@@ -44,7 +45,7 @@
                     <input type="hidden" name="siswa_id" value="{{ $k->siswa->id }}">
                     <input type="hidden" name="jenis_sp" value="{{ $k->jenis_sp }}">
                     <input type="hidden" name="tanggal" value="{{ date('Y-m-d') }}">
-                    <button type="submit" class="btn btn-primary">Terbitkan {{ $k->jenis_sp }}</button>
+                    <button type="submit" class="btn btn-primary" style="min-height:44px;">Terbitkan {{ $k->jenis_sp }}</button>
                 </form>
             </td>
             <td>
@@ -54,11 +55,11 @@
                 @if($k->siswa->noWaInternasional())
                     <a href="{{ $k->siswa->waLink($pesanSp) }}"
                        target="_blank" rel="noopener"
-                       class="btn btn-success btn-sm">
+                       class="btn btn-success btn-sm" style="min-height:44px;">
                         <i class="bi bi-whatsapp"></i> Chat WA
                     </a>
                 @else
-                    <button class="btn btn-secondary btn-sm" disabled
+                    <button class="btn btn-secondary btn-sm" style="min-height:44px;" disabled
                             title="Nomor wali belum diisi">
                         <i class="bi bi-whatsapp"></i> Chat WA
                     </button>
@@ -72,4 +73,5 @@
         @endforelse
     </tbody>
 </table>
+</div>
 @endsection

@@ -10,7 +10,7 @@
 <div class="row g-3">
 
     {{-- 1. Mini Menu Cepat --}}
-    <div class="col-12 col-md-6 col-xl">
+    <div class="col-12 col-xl">
         <div class="ebk-panel quick-mini-panel" style="height:100%;">
             <div class="ebk-panel-head">Menu Cepat</div>
             <div class="quick-mini-body">
@@ -23,7 +23,7 @@
     </div>
 
     {{-- 2. Total Siswa → Data Siswa --}}
-    <div class="col-12 col-md-6 col-xl">
+    <div class="col-6 col-md-6 col-xl">
         <a href="{{ route('siswa.index') }}" class="stat-card-link">
             <div class="stat-card">
                 <div class="stat-icon blue"><i class="bi bi-people-fill"></i></div>
@@ -40,7 +40,7 @@
     </div>
 
     {{-- 2. Pelanggaran Bulan Ini → Riwayat Pelanggaran --}}
-    <div class="col-12 col-md-6 col-xl">
+    <div class="col-6 col-md-6 col-xl">
         <a href="{{ route('pelanggaran.riwayat') }}" class="stat-card-link">
             <div class="stat-card">
                 <div class="stat-icon red"><i class="bi bi-clipboard2-check"></i></div>
@@ -54,7 +54,7 @@
     </div>
 
     {{-- 3. Total Pelanggaran → Riwayat Pelanggaran --}}
-    <div class="col-12 col-md-6 col-xl">
+    <div class="col-6 col-md-6 col-xl">
         <a href="{{ route('pelanggaran.riwayat') }}" class="stat-card-link">
             <div class="stat-card">
                 <div class="stat-icon green"><i class="bi bi-calendar3"></i></div>
@@ -68,7 +68,7 @@
     </div>
 
     {{-- 4. Tahun Ajaran Aktif (digeser dari posisi 5) → Pengaturan Tahun Ajaran --}}
-    <div class="col-12 col-md-6 col-xl">
+    <div class="col-6 col-md-6 col-xl">
         <a href="{{ route('pengaturan.tahun-ajaran') }}" class="stat-card-link">
             <div class="ebk-panel year-card" style="height:100%;">
                 <div class="ebk-panel-head">Tahun Ajaran Aktif</div>
@@ -95,8 +95,8 @@
                 <table class="ebk-table">
                     <thead>
                         <tr>
-                            <th style="width:70px">No</th>
-                            <th>NIS</th>
+                            <th class="col-hide-sm" style="width:70px">No</th>
+                            <th class="col-hide-sm">NIS</th>
                             <th>Nama Siswa</th>
                             <th>Kelas</th>
                             <th>Total Poin</th>
@@ -106,8 +106,8 @@
                     <tbody>
                         @forelse ($siswaTeratas as $i => $s)
                             <tr>
-                                <td>{{ $i + 1 }}</td>
-                                <td>{{ $s['nis'] }}</td>
+                                <td class="col-hide-sm">{{ $i + 1 }}</td>
+                                <td class="col-hide-sm">{{ $s['nis'] }}</td>
                                 <td>{{ $s['nama'] }}</td>
                                 <td>{{ $s['kelas'] }}</td>
                                 <td>{{ $s['poin'] }}</td>

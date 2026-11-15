@@ -141,6 +141,7 @@
 </div>
 
 {{-- ======= TABEL RIWAYAT ======= --}}
+<div class="table-responsive">
 <table class="tbl-center">
     <thead>
         <tr>
@@ -149,8 +150,8 @@
             <th>Kelas</th>
             <th class="td-left">Pelanggaran</th>
             <th>Poin</th>
-            <th class="td-left">Keterangan</th>
-            <th>Pencatat</th>
+            <th class="td-left d-none d-md-table-cell">Keterangan</th>
+            <th class="d-none d-md-table-cell">Pencatat</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -166,8 +167,8 @@
             <td>{{ $r->siswa->kelas ?? '-' }}</td>
             <td class="td-left">{{ $r->jenisPelanggaran->nama ?? '-' }}</td>
             <td style="color:#cc0000; font-weight:bold;">+{{ $r->jenisPelanggaran->poin ?? 0 }}</td>
-            <td class="td-left">{{ $r->keterangan ?? '-' }}</td>
-            <td>{{ $r->pencatat }}</td>
+            <td class="td-left d-none d-md-table-cell">{{ $r->keterangan ?? '-' }}</td>
+            <td class="d-none d-md-table-cell">{{ $r->pencatat }}</td>
             <td>
                 <form action="{{ route('pelanggaran.riwayat.destroy', $r->id) }}" method="POST"
                       style="display:inline;"
@@ -185,9 +186,10 @@
         @endforelse
     </tbody>
 </table>
+</div>
 
 @if($riwayat->hasPages())
-    {{ $riwayat->links() }}
+    {{ $riwayat->links('pagination::bootstrap-5') }}
 @endif
 
 <script>
@@ -233,5 +235,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (kelasVal) muatSiswaInline(kelasVal);
 });
 </script>
+
+@push('styles')
+<style>.pagination { font-size: .85rem; }</style>
+@endpush
 
 @endsection
