@@ -112,7 +112,7 @@
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="#"
-                       onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Logout</a>
+                       onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin logout?')) document.getElementById('form-logout').submit();">Logout</a>
                 </li>
                 @endauth
             </ul>
