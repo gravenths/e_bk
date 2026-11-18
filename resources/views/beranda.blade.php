@@ -9,6 +9,7 @@
 {{-- ============ KARTU STATISTIK ============ --}}
 <div class="row g-3">
 
+    @unless($isViewer ?? false)
     {{-- 1. Mini Menu Cepat --}}
     <div class="col-12 col-xl">
         <div class="ebk-panel quick-mini-panel" style="height:100%;">
@@ -21,6 +22,7 @@
             </div>
         </div>
     </div>
+    @endunless
 
     {{-- 2. Total Siswa → Data Siswa --}}
     <div class="col-6 col-md-6 col-xl">

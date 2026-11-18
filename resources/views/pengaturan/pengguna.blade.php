@@ -32,6 +32,7 @@
                 <select name="role" required>
                     <option value="Guru BK">Guru BK</option>
                     <option value="Admin">Admin</option>
+                    <option value="Viewer">Viewer (Hanya Lihat)</option>
                 </select>
             </div>
 

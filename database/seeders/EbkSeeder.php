@@ -30,6 +30,7 @@ class EbkSeeder extends Seeder
             ['id' => 'u2', 'name' => 'Guru BK', 'email' => 'bk@sekolah.sch.id', 'role' => 'Guru BK', 'status' => 'Aktif'],
             ['id' => 'u3', 'name' => 'Budi Hartono', 'email' => 'budi@sekolah.sch.id', 'role' => 'Guru BK', 'status' => 'Aktif'],
             ['id' => 'u4', 'name' => 'Siti Rahma', 'email' => 'siti@sekolah.sch.id', 'role' => 'Admin', 'status' => 'Nonaktif'],
+            ['id' => 'u5', 'name' => 'Viewer Sekolah', 'email' => 'viewer@sekolah.sch.id', 'role' => 'Viewer', 'status' => 'Aktif'],
         ];
 
         foreach ($users as $u) {

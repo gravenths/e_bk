@@ -147,6 +147,13 @@
             </div>
         @endif
 
+        @if(isset($isViewer) && $isViewer)
+            <div class="alert alert-warning d-flex align-items-center gap-2 mt-2 mb-0" role="alert" style="font-size:.92rem;">
+                <i class="bi bi-eye-fill"></i>
+                <span><strong>Mode Read-Only:</strong> Akun Anda hanya memiliki akses untuk melihat data. Modifikasi tidak diizinkan.</span>
+            </div>
+        @endif
+
         @yield('content')
     </div>
 </main>

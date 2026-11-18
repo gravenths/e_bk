@@ -135,7 +135,7 @@ class PengaturanController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'role' => 'required|in:Admin,Guru BK',
+            'role' => 'required|in:Admin,Guru BK,Viewer',
             'status' => 'required|in:Aktif,Nonaktif',
         ]);
 
@@ -160,7 +160,7 @@ class PengaturanController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'role' => 'required|in:Admin,Guru BK',
+            'role' => 'required|in:Admin,Guru BK,Viewer',
             'status' => 'required|in:Aktif,Nonaktif',
         ]);
 

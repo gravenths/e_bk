@@ -63,7 +63,8 @@
         <div class="demo-info">
             <strong>Akun Demo:</strong><br>
             Admin: admin@sekolah.sch.id (pass: password)<br>
-            Guru BK: bk@sekolah.sch.id (pass: password)
+            Guru BK: bk@sekolah.sch.id (pass: password)<br>
+            Viewer: viewer@sekolah.sch.id (pass: password)
         </div>
     </div>
 </body>

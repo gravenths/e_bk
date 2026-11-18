@@ -34,5 +34,12 @@ class AppServiceProvider extends ServiceProvider
                 ? ['nama' => $ta->tahun . ' - ' . $ta->semester]
                 : ['nama' => '-']);
         });
+
+        // Bagikan status Viewer ke semua view agar tombol aksi bisa disembunyikan
+        View::composer('*', function ($view) {
+            $isViewer = \Illuminate\Support\Facades\Auth::check()
+                && \Illuminate\Support\Facades\Auth::user()->role === 'Viewer';
+            $view->with('isViewer', $isViewer);
+        });
     }
 }
